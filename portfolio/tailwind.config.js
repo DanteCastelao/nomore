@@ -7,6 +7,8 @@ module.exports = {
     },
     backgroundImage: {
       'noise': "url(../public/background.png)",
+      'noise-full': "url(../public/backgroundFull.png)",
+      'noise-x': "url(../public/backgroundWithoutY.png)",
     },
   },
   plugins: [],

@@ -23,14 +23,16 @@ const App = () => {
   };
 
   return (
-    <div className="bg-noise min-h-screen min-w-full">
+    <div className="bg-noise-full min-h-screen min-w-full">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
         <link href="https://fonts.googleapis.com/css2?family=Farro&display=swap" rel="stylesheet"/>
       </head>
 
-      <div className="pt-12 bg-noise h-full">
+      <div className="pt-12 bg-noise-full h-full">
+
+        {thirdTransition ? null : (
         <p className="text-center mb-12">
 
           <span
@@ -50,6 +52,7 @@ const App = () => {
           </span>
         
         </p>
+        )}
 
         {thirdTransition ? <WebDesignPage /> : (
           <>
