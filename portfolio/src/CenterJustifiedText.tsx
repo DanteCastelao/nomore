@@ -3,11 +3,13 @@ import React, { useEffect } from 'react';
 const CenterJustifiedText = () => {
   useEffect(() => {
     const textElement = document.getElementById('justified-text');
-    const containerWidth = document.getElementById('container').offsetWidth;
-    const textWidth = document.getElementById('justified-text').offsetWidth;
-    const marginLeft = (containerWidth - textWidth) / 2;
-    console.log(marginLeft)
-    textElement.style.marginLeft = `${marginLeft}px`;
+    const containerElement = document.getElementById('container');
+    if (textElement && containerElement) {
+      const containerWidth = containerElement.offsetWidth;
+      const textWidth = textElement.offsetWidth;
+      const marginLeft = (containerWidth - textWidth) / 2;
+      textElement.style.marginLeft = `${marginLeft}px`;
+    }
   }, []);
 
   return (

@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { createBrowserRouter } from 'react-router-dom';
-import FashionPage from './FashionPage';
-import WebDesignPage from './WebDesignPage';
-
+import WebDesignPage from './pages/WebDesign/WebDesignPage';
 
 const App = () => {
-  const [firstTransition, setFirstTransition] = useState(false);
-  const [secondTransition, setSecondTransition] = useState(false);
-  const [thirdTransition, setThirdTransition] = useState(false);
+  const [firstTransition, setFirstTransition] = useState<boolean>(false);
+  const [secondTransition, setSecondTransition] = useState<boolean>(false);
+  const [thirdTransition, setThirdTransition] = useState<boolean>(false);
 
-  const handlePortfolioClick = () => {
+  const handlePortfolioClick = () : void => {
     setFirstTransition(true);
     setTimeout(() => {
       setSecondTransition(true);
@@ -26,7 +24,7 @@ const App = () => {
     <div className="bg-noise-full min-h-screen min-w-full">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Farro&display=swap" rel="stylesheet"/>
       </head>
 
