@@ -11,7 +11,6 @@ const Header = ({ transition1 }: { transition1: boolean }) => {
         >
         UX/UI
         </span>
-
         <span
           className={`font-IBM-Plex-Sans uppercase text-white delay-1000 ${
             transition1 ? 'transition-all duration-[600ms] translate-x-[50px] invisible absolute opacity-0' : 'visible opacity-100'

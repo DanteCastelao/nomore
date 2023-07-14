@@ -16,8 +16,8 @@ const App = () => {
   return (
     <div className="bg-noise min-h-screen min-w-full pt-12">
       <Header transition1={Transition1} />
-      <CenterJustifiedText />
-      <Menu handleWebDesign={handleWebDesign} />
+      <CenterJustifiedText transition1={Transition1}/>
+      <Menu handleWebDesign={handleWebDesign} transition1={Transition1}/>
     </div>
   );
 };
