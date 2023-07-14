@@ -18,6 +18,7 @@ const App = () => {
       <Header transition1={Transition1} />
       <CenterJustifiedText transition1={Transition1}/>
       <Menu handleWebDesign={handleWebDesign} transition1={Transition1}/>
+      
     </div>
   );
 };
