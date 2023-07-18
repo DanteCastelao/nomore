@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     fontFamily: {
       "IBM-Plex-Sans": ['"IBM Plex Sans"', 'sans-serif'],
+      "Farro": ['"Farro"', 'serif'],
     },
     backgroundImage: {
       'noise': "url('./assets/noise-background.png')"

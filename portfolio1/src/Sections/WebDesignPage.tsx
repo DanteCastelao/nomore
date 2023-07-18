@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import VideoDisplay from "../../Components/VideoDisplay";
+import VideoDisplay from "../Components/VideoDisplay";
 
 function WebDesignPage() {
   const [projectSelected, setProjectSelected] = useState<string>("Zone");
@@ -92,23 +92,7 @@ function WebDesignPage() {
           <VideoDisplay videoSrc={projectSelected === "Zone" ? "./video1.mp4" : "./video2.mp4"} />
         </div>
       </div>
-      {transition === 2 || transition === 3 ? null : (
-        <div className={`${transition === 1 ? "transition-all duration-[600ms] opacity-0" : "opacity-100"}`}>
-          <div className="flex justify-center mt-14">
-            <button onClick={handleEnterClick} className="text-[16px] font-sans text-white underline">
-              ENTER
-            </button>
-          </div>
-          <div className="flex justify-center mt-14">
-            <div className="w-full">
-              <button onClick={handleHomeClick} className="w-[50%] text-[16px] font-sans text-white underline">
-                BACK
-              </button>
-              <button className="w-[50%] text-[16px] font-sans text-white underline">FASHION PORTFOLIO</button>
-            </div>
-          </div>
-        </div>
-      )}
+      
       {transition === 3 ? (
         <div ref={lastDivRef} className="justify-center flex mt-28 h-[50vh] bg-noise-x">
           <div className="w-[20%] leading-tight">
