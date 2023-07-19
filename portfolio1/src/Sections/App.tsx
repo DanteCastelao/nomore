@@ -11,7 +11,6 @@ const App = () => {
   const [transition1, setTransition1] = useState(false);
   const [transition2, setTransition2] = useState(false);
   const [transition3, setTransition3] = useState(false);
-  const [transition4, setTransition4] = useState(false);
 
   useEffect(() => {
     if (transition1) {
@@ -19,9 +18,6 @@ const App = () => {
         setTransition2(true)
         setTimeout(() => {
           setTransition3(true)
-          setTimeout(() => {
-            setTransition4(true)
-          }, 600);
         }, 600);
       }, 600);
     }
@@ -32,8 +28,6 @@ const App = () => {
   };
 
   const handleBack = () => {
-    setTransition4(false);
-    setTimeout(() => {
       setTransition3(false);
       setTimeout(() => {
         setTransition2(false)
@@ -41,16 +35,15 @@ const App = () => {
           setTransition1(false)
         }, 600);
       }, 600);
-    }, 600);
   };
 
   return (
     <div className="bg-noise min-h-screen min-w-full pt-12">
       <Header transition={transition1} />
-      <CenterJustifiedText firstTransition={transition1} middleTransition={transition2} lastTransition={transition3}/>
-      <ProjectSelector firstTransition={transition4} lastTransition={transition3}/>
-      <Menu handleWebDesign={handleWebDesign} firstTransition={transition1} lastTransition={transition3}/>
-      <WebDesignMenu handleBack={handleBack} firstTransition={transition4} lastTransition={transition3}/>
+      <CenterJustifiedText firstTransition={transition1} secondTransition={transition2}/>
+      <ProjectSelector firstTransition={transition3}/>
+      <Menu handleWebDesign={handleWebDesign} firstTransition={transition1}/>
+      <WebDesignMenu handleBack={handleBack} firstTransition={transition3}/>
     </div>
   );
 };

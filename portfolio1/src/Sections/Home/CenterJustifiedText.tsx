@@ -1,16 +1,23 @@
-import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import JustifiedTextDesktop from '../../assets/JustifiedTextDesktop.png';
 
-const CenterJustifiedText = ({ firstTransition, middleTransition, lastTransition }: { firstTransition: boolean, middleTransition: boolean, lastTransition: boolean }) => {
+const CenterJustifiedText = ({ firstTransition, secondTransition }: { firstTransition: boolean, secondTransition: boolean }) => {
 
   return (
-    <>
-    {lastTransition ? null :
-      <div className='flex justify-center'>
-        <img src={JustifiedTextDesktop} className={`transition-all duration-[600ms] ${firstTransition ? 'invert' : null} ${middleTransition ? 'opacity-0' : 'opacity-100'}`} alt='Justified Text'/>
-      </div>
-    }
-    </>
+      <AnimatePresence>
+        {!secondTransition && (
+          <motion.div
+            className='flex justify-center'
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}>
+
+            <img src={JustifiedTextDesktop} className={`transition-all duration-[600ms] ${firstTransition ? 'invert' : null}`} alt='Justified Text'/>
+          
+          </motion.div>
+        )}
+      </AnimatePresence>
   );
 };
 
