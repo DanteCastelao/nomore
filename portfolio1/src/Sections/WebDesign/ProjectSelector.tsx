@@ -1,5 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
+import VideoDisplay from '../../Components/VideoDisplay';
+import video1 from "../../assets/video1.mp4";
+import video2 from "../../assets/video2.mp4";
 
 const ProjectSelector =  ({ firstTransition }: { firstTransition: boolean }) => {
     const [projectSelected, setProjectSelected] = useState("Zone");
@@ -8,7 +11,7 @@ const ProjectSelector =  ({ firstTransition }: { firstTransition: boolean }) => 
         <AnimatePresence>
             {firstTransition && (
                 <motion.div 
-                    className='justify-center flex' 
+                    className='items-center flex flex-col' 
                     initial={{ opacity: 0 }} 
                     animate={{ opacity: 1 }} 
                     exit={{ opacity: 0 }}
@@ -36,6 +39,10 @@ const ProjectSelector =  ({ firstTransition }: { firstTransition: boolean }) => 
                             ZONE
                         </button>
                     </div>
+
+                    <div className='w-2/5 my-10'>
+                        <VideoDisplay videoSrc={projectSelected === "Zone" ? video1 : video2}/>
+                    </div>    
 
                 </motion.div>
             )}
