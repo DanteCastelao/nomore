@@ -1,0 +1,89 @@
+---
+import ThemeChanger from '../components/ThemeChanger.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="nomore">
+	<div class="container">
+		<div class="logo-container">
+			<div class="logo">
+				<span>nomore</span>
+				<div class="justified">
+					<span>n</span>
+					<span>m</span>
+					<span>re</span>
+				</div>
+				<span>nm</span>
+				<div class="last-word">
+					<span>n</span>
+					<span>m</span>
+				</div>
+			</div>
+		</div>
+		<div class="show"></div>
+		<div class="menu">
+			<div class="links">
+				<a href="/prtyps">prtyps</a>
+				<a href="/info">info</a>
+			</div>
+			<ThemeChanger />
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.container {
+		display: flex;
+		flex-direction: row;
+		height: 100%;
+		padding-left: 6%;
+	}
+	.logo-container {
+		display: flex;
+		margin-top: 2rem;
+		user-select: none;
+	}
+	.logo {
+		line-height: 10rem;
+		display: flex;
+		flex-direction: column;
+	}
+	.logo span {
+		font-size: 11rem;
+		font-weight: 400;
+	}
+	.justified {
+		display: flex;
+		justify-content: space-between;
+	}
+	.last-word {
+		display: flex;
+		flex-direction: column;
+		line-height: 8rem;
+	}
+	.show {
+		width: 30%;
+	}
+	a {
+		color: var(--text);
+	}
+	.menu {
+		display: flex;
+		flex-direction: column;
+		padding-top: 8rem;
+		text-decoration: underline;
+		text-align: end;
+	}
+	.links {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		text-transform: uppercase;
+		gap: 1rem;
+	}
+	.a {
+		align-self: flex-end;
+		text-align: end;
+	}
+
+</style>

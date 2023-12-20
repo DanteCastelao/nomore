@@ -1,0 +1,264 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CargoPants1 from "../assets/nm.cargopant1.png";
+import OverPants1 from "../assets/nm.overpant1.png";
+import CargoPants1Detail from "../assets/nm.cargopant1.detail1.png";
+import OverPants1Detail from "../assets/nm.overpant1.detail1.png";
+import ThemeChanger from "../components/ThemeChanger.astro";
+
+const pantsData = [
+    { name: "Cargo Pants", photos: [CargoPants1Detail.src, CargoPants1Detail.src, CargoPants1Detail.src] },
+    { name: "Over Pants", photos: [OverPants1Detail.src, OverPants1Detail.src, OverPants1Detail.src] },
+];
+---
+
+<Layout title="nomore-prytps">
+    <div class="container">
+		<div class="logo-container">
+			<div class="logo">
+				<span>nomore</span>
+				<div class="justified">
+					<span>n</span>
+					<span>m</span>
+					<span>re</span>
+				</div>
+				<span>nm</span>
+				<div class="last-word">
+					<span>n</span>
+					<span>m</span>
+				</div>
+			</div>
+		</div>
+		<div class="show">
+            <a class="item" id="cargoPantsButton">
+                <img src={CargoPants1.src} alt="Cargo Pants" />
+                <span>nmnocar</span>
+            </a>
+            <a class="item" id="overPantsButton">
+                <img src={OverPants1.src} alt="Over Pants"/>
+                <span>nmoverpant</span>
+            </a>
+        </div>
+		<div class="menu">
+            <div class="top">
+                <div class="left">
+                    <div class="links">
+                        <a href="/prtyps" class="active">prtyps</a>
+                        <a href="/info">info</a>
+                    </div>
+                    <ThemeChanger />
+                </div>
+                <div class="collections">
+                    <a href="/shop" class="active">"collection 1"</a>
+                </div>
+                <div class="filters" id="menu">
+                    <a data-index="0" class="active">todo</a>
+                    <a data-index="1">superior</a>
+                    <a data-index="2">inferior</a>
+                    <a data-index="3">accesorios</a>
+                    <a data-index="4">negro</a>
+                    <a data-index="5">blanco</a>
+                </div>
+            </div>
+		</div>
+        <div class="photos" id="photos-container">
+        </div>
+	</div>
+    
+    <script define:vars={{ pantsData }}>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuItems = document.querySelectorAll('#menu a');
+
+            menuItems.forEach(item => {
+                    item.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    changeOption(item);
+                });
+            });
+
+            function changeOption(selectedItem) {
+                const menu = document.getElementById('menu');
+
+                menu.querySelectorAll('a').forEach(item => item.classList.remove('active'));
+                selectedItem.classList.add('active');
+                const menuItemsArray = Array.from(menu.children);
+                menuItemsArray.sort((a, b) => a.dataset.index - b.dataset.index);
+                menuItemsArray.forEach(item => menu.appendChild(item));
+            }
+        });
+
+        let selectedPants = null;
+
+        const cargoPantsButton = document.getElementById('cargoPantsButton');
+        const overPantsButton = document.getElementById('overPantsButton');
+
+        cargoPantsButton.addEventListener('click', () => handlePantsClick('cargo'));
+        overPantsButton.addEventListener('click', () => handlePantsClick('over'));
+
+        function handlePantsClick(type) {
+            console.log(type);
+            selectedPants = type;
+            updatePhotos();
+        }
+
+        function updatePhotos() {
+            const photosContainer = document.getElementById('photos-container');
+            photosContainer.innerHTML = '';
+
+            if (selectedPants === 'cargo') {
+                displayPhotos(pantsData[0].photos, photosContainer);
+            } else if (selectedPants === 'over') {
+                displayPhotos(pantsData[1].photos, photosContainer);
+            }
+        }
+
+        function displayPhotos(photos, container) {
+            photos.forEach(photo => {
+                const imgElement = document.createElement('img');
+                imgElement.src = photo;
+                if (selectedPants === 'cargo') {
+                    imgElement.alt = pantsData[0].name;
+                } else if (selectedPants === 'over') {
+                    imgElement.alt = pantsData[1].name;
+                }
+                container.appendChild(imgElement);
+            });
+        }
+    </script>
+</Layout>
+
+<style>
+	.container {
+		display: flex;
+		flex-direction: row;
+		height: 100%;
+		padding-left: 6%;
+        overflow: hidden;
+	}
+	.logo-container {
+		display: flex;
+		margin-top: 2rem;
+		user-select: none;
+	}
+	.logo {
+		line-height: 10rem;
+		display: flex;
+		flex-direction: column;
+	}
+	.logo span {
+		font-size: 11rem;
+		font-weight: 400;
+	}
+	.justified {
+		display: flex;
+		justify-content: space-between;
+	}
+	.last-word {
+		display: flex;
+		flex-direction: column;
+		line-height: 8rem;
+	}
+	.show {
+		width: 30%;
+        padding-top: 8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 6rem;
+        overflow-y: scroll;
+        height: 100vh;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        box-sizing: border-box;
+	}
+    .show::-webkit-scrollbar {
+        display: none;
+    }
+    .item {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-left: 30%;
+        padding-right: 30%;
+        align-items: center;
+    }
+    .item span {
+        text-decoration: underline;
+    }
+	.menu {
+		display: flex;
+		flex-direction: column;
+		padding-top: 8rem;
+	}
+    .top {
+        display: flex;
+        flex-direction: row;
+        gap: 4rem;
+		flex-grow: 1;
+        padding-bottom: 12%;
+    }
+    .left {
+        display: flex;
+        flex-direction: column;
+    }
+	.links {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+        text-transform: uppercase;
+		flex-grow: 1;
+	}
+    .links :not(.active) {
+		text-align: end;
+        color: var(--text);
+    }
+    .a {
+        align-self: flex-end;
+        text-decoration: underline !important;
+    }
+    .collections {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .collections :not(.active) {
+		text-align: end;
+        color: var(--text);
+    }
+    .filters {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .filters :not(.active) {
+	    text-decoration: underline;
+		text-align: end;
+        font-size: 0.9rem;
+    }
+    .active {
+        text-transform: lowercase;
+        text-decoration: none !important; 
+		text-align: end;
+        font-size: 1.3rem;
+        color: var(--text);
+    }
+    .active::before {
+        content: "- ";
+    }
+    .photos {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding-left: 6rem;
+        height: 100%;
+        overflow-y: scroll;
+        padding-top: 2rem;
+        box-sizing: border-box;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .photos::-webkit-scrollbar {
+        display: none;
+    }
+
+</style>

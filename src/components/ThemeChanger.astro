@@ -1,0 +1,22 @@
+---
+---
+<a class="a">noche</a>
+
+<script>
+    const a = document.querySelector('.a');
+    a.addEventListener('click', function() {
+        var element = document.body;
+        element.classList.toggle("light-mode");
+    });
+</script>
+
+<style>
+	.a {
+        text-align: left;
+        text-decoration: underline;
+    }
+    body {
+		color: var(--text);
+		background: var(--background);
+    }
+</style>
