@@ -5,6 +5,7 @@ import OverPants1 from "../assets/nm.overpant1.png";
 import CargoPants1Detail from "../assets/nm.cargopant1.detail1.png";
 import OverPants1Detail from "../assets/nm.overpant1.detail1.png";
 import ThemeChanger from "../components/ThemeChanger.astro";
+import MarqueeMobile from "../components/MarqueeMobile";
 
 const pantsData = [
     { name: "Cargo Pants", photos: [CargoPants1Detail.src, CargoPants1Detail.src, CargoPants1Detail.src] },
@@ -46,7 +47,9 @@ const pantsData = [
                         <a href="/prtyps" class="active">prtyps</a>
                         <a href="/info">info</a>
                     </div>
-                    <ThemeChanger />
+                    <div class="desktop-menu">
+                        <ThemeChanger />
+                    </div>
                 </div>
                 <div class="collections">
                     <a href="/shop" class="active">"collection 1"</a>
@@ -60,10 +63,32 @@ const pantsData = [
                     <a data-index="5">blanco</a>
                 </div>
             </div>
+            <div class="mobile-menu">  
+                <ThemeChanger />
+            </div>
 		</div>
         <div class="photos" id="photos-container">
         </div>
 	</div>
+    <div class="mobile">
+        <div class="top">
+            <MarqueeMobile client:only/>
+            <div class="links">
+                <a href="/prtyps" class="active">prtyps</a>
+                <a href="/info">info</a>
+            </div>
+        </div>
+        <div class="show">
+            <a class="item" id="cargoPantsButton">
+                <img src={CargoPants1.src} alt="Cargo Pants" />
+                <span>nmnocar</span>
+            </a>
+            <a class="item" id="overPantsButton">
+                <img src={OverPants1.src} alt="Over Pants"/>
+                <span>nmoverpant</span>
+            </a>
+        </div>
+    </div>
     
     <script define:vars={{ pantsData }}>
         document.addEventListener('DOMContentLoaded', () => {
@@ -133,6 +158,7 @@ const pantsData = [
 		flex-direction: row;
 		height: 100%;
 		padding-left: 6%;
+        padding-right: 6%;
         overflow: hidden;
 	}
 	.logo-container {
@@ -146,7 +172,7 @@ const pantsData = [
 		flex-direction: column;
 	}
 	.logo span {
-		font-size: 11rem;
+		font-size: clamp(1rem, 10vw, 11vw);
 		font-weight: 400;
 	}
 	.justified {
@@ -194,11 +220,12 @@ const pantsData = [
         flex-direction: row;
         gap: 4rem;
 		flex-grow: 1;
-        padding-bottom: 12%;
+        padding-bottom: 12vh;
     }
     .left {
         display: flex;
         flex-direction: column;
+        align-items: end;
     }
 	.links {
 		display: flex;
@@ -256,5 +283,64 @@ const pantsData = [
     .photos::-webkit-scrollbar {
         display: none;
     }
+    .desktop-menu {
+        display: flex;
+    }
+    .mobile-menu {
+        display: none;
+    }
+    .mobile {
+		display: none;
+	}
+    @media screen and (max-width: 1200px) {
+        .container {
+            justify-content: space-between;
+        }
+        .menu {
+            align-items: end;
+            padding-bottom: 12%;
+        }
+        .top {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+        .desktop-menu {
+            display: none;
+        }
+        .mobile-menu {
+            display: flex;
+        }
+	}
+    @media screen and (max-width: 800px) {
+		.container {
+			display: none;
+		}
+		.mobile {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.top {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+		}
+		.links {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			font-size: 1.3rem;
+			align-items: center;
+		}
+        .show {
+            padding-top: 4rem;
+            overflow-y: unset;
+            height: unset;
+            -ms-overflow-style: unset;
+            scrollbar-width: unset;
+            box-sizing: border-box;
+        }
+	}
 
 </style>
