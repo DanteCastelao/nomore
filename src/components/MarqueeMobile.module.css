@@ -1,0 +1,10 @@
+.container {
+    width: 100%;
+    gap: 6rem;
+    display: flex;
+    flex-direction: row;
+}
+.text {
+	font-size: 11rem;
+    color: var(--text);
+}
