@@ -3,20 +3,32 @@
 <a class="a">noche</a>
 
 <script>
-    const a = document.querySelector('.a');
-    a.addEventListener('click', function() {
-        var element = document.body;
-        element.classList.toggle("light-mode");
-    });
+  const a = document.querySelector('.a');
+  const element = document.body;
+
+  // Check for saved preference in cookies, default to dark if not found
+  const savedMode = document.cookie.match('theme=light');
+  if (savedMode) {
+    element.classList.remove('light-mode'); // Remove light-mode class for light preference
+  } else {
+    element.classList.add('light-mode'); // Add light-mode class for dark preference (default)
+  }
+
+  a.addEventListener('click', function() {
+    element.classList.toggle("light-mode");
+
+    // Set cookie based on current mode
+    document.cookie = 'theme=' + (element.classList.contains('light-mode') ? 'light' : 'dark');
+  });
 </script>
 
 <style>
-	.a {
-        text-align: left;
-        text-decoration: underline;
-    }
-    body {
-		color: var(--text);
-		background: var(--background);
-    }
+  .a {
+    text-align: left;
+    text-decoration: underline;
+  }
+  body {
+    color: var(--text);
+    background: var(--background);
+  }
 </style>
