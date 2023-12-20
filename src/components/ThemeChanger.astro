@@ -6,18 +6,17 @@
   const a = document.querySelector('.a');
   const element = document.body;
 
-  // Check for saved preference in cookies, default to dark if not found
   const savedMode = document.cookie.match('theme=light');
   if (savedMode) {
-    element.classList.remove('light-mode'); // Remove light-mode class for light preference
+    
+    element.classList.add('light-mode');
   } else {
-    element.classList.add('light-mode'); // Add light-mode class for dark preference (default)
+    
+    element.classList.remove('light-mode');
   }
 
   a.addEventListener('click', function() {
     element.classList.toggle("light-mode");
-
-    // Set cookie based on current mode
     document.cookie = 'theme=' + (element.classList.contains('light-mode') ? 'light' : 'dark');
   });
 </script>
