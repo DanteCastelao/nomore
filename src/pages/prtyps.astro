@@ -5,7 +5,8 @@ import OverPants1 from "../assets/nm.overpant1.png";
 import CargoPants1Detail from "../assets/nm.cargopant1.detail1.png";
 import OverPants1Detail from "../assets/nm.overpant1.detail1.png";
 import ThemeChanger from "../components/ThemeChanger.astro";
-import MarqueeMobile from "../components/MarqueeMobile";
+import Mobile from "../components/Mobile.astro";
+import TShirt1 from "../assets/nm.tshirt1.png";
 
 const pantsData = [
     { name: "Cargo Pants", photos: [CargoPants1Detail.src, CargoPants1Detail.src, CargoPants1Detail.src] },
@@ -31,14 +32,18 @@ const pantsData = [
 			</div>
 		</div>
 		<div class="show">
-            <a class="item" id="cargoPantsButton">
+            <div class="item" id="cargoPantsButton">
                 <img src={CargoPants1.src} alt="Cargo Pants" />
                 <span>nmnocar</span>
-            </a>
-            <a class="item" id="overPantsButton">
+            </div>
+            <div class="item" id="overPantsButton">
+                <img src={TShirt1.src} alt="Over Pants"/>
+                <span>nmhanfutee</span>
+            </div>
+            <div class="item" id="overPantsButton">
                 <img src={OverPants1.src} alt="Over Pants"/>
                 <span>nmoverpant</span>
-            </a>
+            </div>
         </div>
 		<div class="menu">
             <div class="top">
@@ -70,25 +75,7 @@ const pantsData = [
         <div class="photos" id="photos-container">
         </div>
 	</div>
-    <div class="mobile">
-        <div class="top">
-            <MarqueeMobile client:only/>
-            <div class="links">
-                <a href="/prtyps" class="active">prtyps</a>
-                <a href="/info">info</a>
-            </div>
-        </div>
-        <div class="show">
-            <a class="item" id="cargoPantsButton">
-                <img src={CargoPants1.src} alt="Cargo Pants" />
-                <span>nmnocar</span>
-            </a>
-            <a class="item" id="overPantsButton">
-                <img src={OverPants1.src} alt="Over Pants"/>
-                <span>nmoverpant</span>
-            </a>
-        </div>
-    </div>
+    <Mobile />
     
     <script define:vars={{ pantsData }}>
         document.addEventListener('DOMContentLoaded', () => {
@@ -149,6 +136,14 @@ const pantsData = [
                 container.appendChild(imgElement);
             });
         }
+        window.addEventListener('scroll', () => {
+            window.requestAnimationFrame(() => {
+                window.scrollTo({
+                    top: window.scrollY,
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 </Layout>
 
@@ -161,6 +156,9 @@ const pantsData = [
         padding-right: 6%;
         overflow: hidden;
 	}
+    a {
+        cursor: pointer;
+    }
 	.logo-container {
 		display: flex;
 		margin-top: 2rem;
@@ -195,6 +193,7 @@ const pantsData = [
         -ms-overflow-style: none;
         scrollbar-width: none;
         box-sizing: border-box;
+        padding-bottom: 10rem;
 	}
     .show::-webkit-scrollbar {
         display: none;
@@ -206,6 +205,7 @@ const pantsData = [
         padding-left: 30%;
         padding-right: 30%;
         align-items: center;
+        cursor: pointer;
     }
     .item span {
         text-decoration: underline;
@@ -314,33 +314,7 @@ const pantsData = [
 	}
     @media screen and (max-width: 800px) {
 		.container {
-			display: none;
+			display: none
 		}
-		.mobile {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		}
-		.top {
-			display: flex;
-			flex-direction: column;
-			width: 100%;
-		}
-		.links {
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			font-size: 1.3rem;
-			align-items: center;
-		}
-        .show {
-            padding-top: 4rem;
-            overflow-y: unset;
-            height: unset;
-            -ms-overflow-style: unset;
-            scrollbar-width: unset;
-            box-sizing: border-box;
-        }
 	}
-
 </style>

@@ -1,23 +1,26 @@
 ---
 ---
-<a class="a">noche</a>
+<div class="a">noche</div>
 
 <script>
   const a = document.querySelector('.a');
   const element = document.body;
 
   const savedMode = document.cookie.match('theme=light');
+
   if (savedMode) {
-    
     element.classList.add('light-mode');
+    a.textContent = 'día';
   } else {
-    
     element.classList.remove('light-mode');
+    a.textContent = 'noche';
   }
 
   a.addEventListener('click', function() {
     element.classList.toggle("light-mode");
     document.cookie = 'theme=' + (element.classList.contains('light-mode') ? 'light' : 'dark');
+
+    a.textContent = element.classList.contains('light-mode') ? 'día' : 'noche';
   });
 </script>
 
@@ -25,6 +28,7 @@
   .a {
     text-align: left;
     text-decoration: underline;
+    cursor: pointer;
   }
   body {
     color: var(--text);
