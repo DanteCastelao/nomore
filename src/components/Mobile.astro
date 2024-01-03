@@ -1,8 +1,11 @@
 ---
+import MarqueeMobile from '../components/MarqueeMobile';
 import CargoPants1 from "../assets/nm.cargopant1.png";
 import OverPants1 from "../assets/nm.overpant1.png";
 import TShirt1 from "../assets/nm.tshirt1.png";
-import MarqueeMobile from '../components/MarqueeMobile';
+import Bag1 from "../assets/nm.bag1.png";
+import CargoPants2 from "../assets/nm.cargopant2.png";
+import Hood1 from "../assets/nm.hood1.png";
 ---
 
 
@@ -10,22 +13,34 @@ import MarqueeMobile from '../components/MarqueeMobile';
     <div class="top">
         <MarqueeMobile client:only/>
         <div class="links">
-            <a href="/prtyps" class="active"  >prtyps</a>
+            <a href="/prtyps" class="active">prtyps</a>
             <a href="/info">info</a>
         </div>
     </div>
     <div class="show">
         <div class="item" id="cargoPantsButton">
-            <img src={CargoPants1.src} alt="Cargo Pants" />
-            <span>nmnocar</span>
-        </a>
-        <div class="item" id="overPantsButton">
-            <img src={TShirt1.src} alt="Over Pants"/>
-            <span>nmhanfutee</span>
+            <img src={Hood1.src} alt="Hood Prototype 1" />
+            <span>nmhood PRTYP 1</span>
         </div>
         <div class="item" id="overPantsButton">
-            <img src={OverPants1.src} alt="Over Pants"/>
-            <span>nmoverpant</span>
+            <img src={TShirt1.src} alt="T-shirt Prototype 1"/>
+            <span>nmhanfutee PRTYP 1</span>
+        </div>
+        <div class="item" id="cargoPantsButton">
+            <img src={CargoPants2.src} alt="Cargo Pants Prototype 2" />
+            <span>nmnocar PRTYP 2</span>
+        </div>
+        <div class="item" id="overPantsButton">
+            <img src={CargoPants1.src} alt="Cargo Pants Prototype 1"/>
+            <span>nmnocar PRTYP 1</span>
+        </div>
+        <div class="item" id="overPantsButton">
+            <img src={OverPants1.src} alt="Over Pants Prototype 1"/>
+            <span>nmoverpant PRTYP 1</span>
+        </div>
+        <div class="item" id="overPantsButton">
+            <img src={Bag1.src} alt="Bag Prototype 1"/>
+            <span>nmrbag PRTYP 1</span>
         </div>
     </div>
 </div>
