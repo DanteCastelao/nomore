@@ -5,6 +5,8 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="nomore-prytps">
     <div class="container">
+		<div class="gradient-top"></div>
+        <div class="gradient-bottom"></div>
 		<div class="logo-container">
 			<div class="logo">
 				<span>nomore</span>
@@ -48,6 +50,22 @@ import Layout from "../layouts/Layout.astro";
 		height: 100%;
 		padding-left: 6%;
 	}
+	.gradient-top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10%;
+        background: linear-gradient(to bottom, var(--background) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+    .gradient-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 10%;
+        background: linear-gradient(to top, var(--background) 0%, rgba(0, 0, 0, 0) 100%);
+    }
 	.logo-container {
 		display: flex;
 		margin-top: 2rem;
