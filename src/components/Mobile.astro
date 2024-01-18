@@ -10,11 +10,14 @@ import Hood1 from "../assets/nm.hood1.png";
 
 
 <div class="mobile">
+    <div class="gradient-top-mobile"></div>
+    <div class="gradient-bottom-mobile"></div>
     <div class="top">
         <MarqueeMobile client:only/>
         <div class="links">
             <a href="/prtyps" class="active">prtyps</a>
             <a href="/info">info</a>
+            <a href="/shop">shop</a>
         </div>
     </div>
     <div class="show">
@@ -49,6 +52,22 @@ import Hood1 from "../assets/nm.hood1.png";
     .mobile {
 		display: none;
 	}
+    .gradient-top-mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10vh;
+        background: linear-gradient(to bottom, var(--background) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+    .gradient-bottom-mobile {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 10vh;
+        background: linear-gradient(to top, var(--background) 0%, rgba(0, 0, 0, 0) 100%);
+    }
     a {
 		color: var(--text);
         cursor: pointer;
@@ -113,6 +132,7 @@ import Hood1 from "../assets/nm.hood1.png";
     .item span {
         text-decoration: underline;
 		font-size: 1.3rem;
+        text-align: center;
     }
     .active {
         text-transform: lowercase;
