@@ -1,6 +1,7 @@
 ---
 import ThemeChanger from "../components/ThemeChanger.astro";
 import Layout from "../layouts/Layout.astro";
+import InfoMobile from "../components/InfoMobile.astro";
 ---
 
 <Layout title="nomore-info">
@@ -41,6 +42,7 @@ import Layout from "../layouts/Layout.astro";
 			<ThemeChanger />
 		</div>
 	</div>
+	<InfoMobile />
 </Layout>
 
 
@@ -126,9 +128,6 @@ import Layout from "../layouts/Layout.astro";
         justify-content: center;
 	}
 	@media screen and (max-width: 1200px) {
-		.show {
-			display: none;
-		}
 		.container {
 			padding-right: 6%;
 			justify-content: space-between;

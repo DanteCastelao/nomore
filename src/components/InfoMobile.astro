@@ -1,0 +1,142 @@
+---
+import MarqueeMobile from '../components/MarqueeMobile';
+---
+
+
+<div class="mobile">
+    <div class="gradient-top-mobile"></div>
+    <div class="gradient-bottom-mobile"></div>
+    <div class="top">
+        <MarqueeMobile client:only/>
+        <div class="links">
+            <a href="/shop">shop</a>
+            <a href="/prtyps">prtyps</a>
+            <a href="/info" class="active">info</a>
+        </div>
+    </div>
+    <div class="show">
+        <div class="info-text">
+            <span>no more™</span>
+            <span>based in Argentina</span>
+            <span>no more logos no more prints no more walking ads</span>
+            <div class="info-subtext">
+                <a href="https://www.instagram.com/no.more.tm?igsh=eHd3eXJzMmVhczlj">instagram</a>
+                <a href="https://dantecastelao.com.ar">developer</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .mobile {
+		display: none;
+	}
+    .gradient-top-mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10vh;
+        background: linear-gradient(to bottom, var(--background) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+    .gradient-bottom-mobile {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 10vh;
+        background: linear-gradient(to top, var(--background) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+    a {
+		color: var(--text);
+        cursor: pointer;
+	}
+	.links {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		text-transform: uppercase;
+		gap: 1rem;
+	}
+    @media screen and (max-width: 800px) {
+		.mobile {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.top {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+		}
+		.links {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			font-size: 1.3rem;
+			align-items: center;
+		}
+	}
+    .active {
+        text-transform: lowercase;
+        text-decoration: none !important; 
+		text-align: end;
+        color: var(--text);
+		font-size: 1.5rem;
+    }
+    .active::before {
+        content: "- ";
+    }
+	.show {
+		width: 50%;
+        padding-top: 6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 6rem;
+        box-sizing: border-box;
+        padding-bottom: 10rem;
+	}
+    @media screen and (max-width: 400px) {
+        .show {
+            width: 70%;
+        }
+    }
+    .show::-webkit-scrollbar {
+        display: none;
+    }
+    .item {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-left: 30%;
+        padding-right: 30%;
+        align-items: center;
+        cursor: pointer;
+    }
+    .item span {
+        text-decoration: underline;
+		font-size: 1.3rem;
+        text-align: center;
+    }
+    .active {
+        text-transform: lowercase;
+        text-decoration: none !important; 
+		text-align: end;
+        color: var(--text);
+		font-size: 1.5rem;
+    }
+    .active::before {
+        content: "- ";
+    }
+    .info-text {
+        display: flex;
+        flex-direction: column;
+        gap: 1.8rem;
+        font-size: 1rem;
+    }
+    .info-subtext {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+</style>
