@@ -5,6 +5,6 @@
     flex-direction: row;
 }
 .text {
-	font-size: 11rem;
+	font-size: 9rem;
     color: var(--text);
 }
