@@ -34,12 +34,20 @@ import InfoMobile from "../components/InfoMobile.astro";
             </div>
         </div>
         <div class="menu">
-			<div class="links">
-				<a href="/shop">shop</a>
-				<a href="/prtyps">prtyps</a>
-				<a href="/info" class="active">info</a>
-			</div>
-			<ThemeChanger />
+            <div class="top">
+                <div class="left">
+                    <div class="links">
+                        <a href="/shop">shop</a>
+                        <a href="/prtyps">prtyps</a>
+                        <a href="/info" class="active">info</a>
+                    </div>
+                    <div class="desktop-menu">
+                        <ThemeChanger />
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu">
+            </div>
 		</div>
 	</div>
 	<InfoMobile />
@@ -52,6 +60,7 @@ import InfoMobile from "../components/InfoMobile.astro";
 		flex-direction: row;
 		height: 100%;
 		padding-left: 6%;
+        padding-right: 6%;
 	}
 	.gradient-top {
         position: absolute;
@@ -102,16 +111,32 @@ import InfoMobile from "../components/InfoMobile.astro";
 		display: flex;
 		flex-direction: column;
 		padding-top: 8rem;
-		text-align: end;
+		width: 5rem;
 		align-items: end;
 	}
+    .top {
+        display: flex;
+        flex-direction: row;
+        gap: 4rem;
+		flex-grow: 1;
+        padding-bottom: 12vh;
+    }
+    .left {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+    }
 	.links {
 		display: flex;
 		flex-direction: column;
-		flex-grow: 1;
-		text-transform: uppercase;
 		gap: 1rem;
+        text-transform: uppercase;
+		flex-grow: 1;
 	}
+    .links :not(.active) {
+		text-align: end;
+        color: var(--text);
+    }
 	.a {
 		align-self: flex-end;
 		text-align: end;

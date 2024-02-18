@@ -6,15 +6,14 @@ import CargoPants1Detail from "../assets/nm.cargopant1.detail1.png";
 import OverPants1Detail from "../assets/nm.overpant1.detail1.png";
 import ThemeChanger from "../components/ThemeChanger.astro";
 import PrtypsMobile from "../components/PrtypsMobile.astro";
-import TShirt1 from "../assets/nm.tshirt1.png";
-import Bag1 from "../assets/nm.bag1.png";
-import CargoPants2 from "../assets/nm.cargopant2.png";
-import Hood1 from "../assets/nm.hood1.png";
 
 const pantsData = [
     { name: "Cargo Pants", photos: [CargoPants1Detail.src, CargoPants1Detail.src, CargoPants1Detail.src] },
     { name: "Over Pants", photos: [OverPants1Detail.src, OverPants1Detail.src, OverPants1Detail.src] },
 ];
+
+const response = await fetch('https://nomore-1f971c0714b0.herokuapp.com/prtyps');
+const data = await response.json();
 ---
 
 <Layout title="nomore-prytps">
@@ -37,30 +36,14 @@ const pantsData = [
 			</div>
 		</div>
 		<div class="show">
-            <div class="item" id="cargoPantsButton">
-                <img src={Hood1.src} alt="Hood Prototype 1" />
-                <span>nmhood PRTYP 1</span>
-            </div>
-            <div class="item" id="overPantsButton">
-                <img src={TShirt1.src} alt="T-shirt Prototype 1"/>
-                <span>nmhanfutee PRTYP 1</span>
-            </div>
-            <div class="item" id="cargoPantsButton">
-                <img src={CargoPants2.src} alt="Cargo Pants Prototype 2" />
-                <span>nmnocar PRTYP 2</span>
-            </div>
-            <div class="item" id="overPantsButton">
-                <img src={CargoPants1.src} alt="Cargo Pants Prototype 1"/>
-                <span>nmnocar PRTYP 1</span>
-            </div>
-            <div class="item" id="overPantsButton">
-                <img src={OverPants1.src} alt="Over Pants Prototype 1"/>
-                <span>nmoverpant PRTYP 1</span>
-            </div>
-            <div class="item" id="overPantsButton">
-                <img src={Bag1.src} alt="Bag Prototype 1"/>
-                <span>nmrbag PRTYP 1</span>
-            </div>
+            {data.map(item => (
+                <div class="item">
+                    {item.image_id && (
+                        <img src={`data:image/png;base64,${item.imageData}`} alt={item.name} />
+                    )}
+                    <span>{item.name}</span>
+                </div>
+            ))}
         </div>
 		<div class="menu">
             <div class="top">
@@ -75,8 +58,7 @@ const pantsData = [
                     </div>
                 </div>
             </div>
-            <div class="mobile-menu">  
-                <ThemeChanger />
+            <div class="mobile-menu">
             </div>
 		</div>
         <div class="photos" id="photos-container">
@@ -237,6 +219,8 @@ const pantsData = [
 		display: flex;
 		flex-direction: column;
 		padding-top: 8rem;
+        width: 5rem;
+        align-items: end;
 	}
     .top {
         display: flex;
