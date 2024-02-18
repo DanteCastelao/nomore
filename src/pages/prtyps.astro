@@ -38,9 +38,7 @@ const data = await response.json();
 		<div class="show">
             {data.map(item => (
                 <div class="item">
-                    {item.image_id && (
-                        <img src={`data:image/png;base64,${item.imageData}`} alt={item.name} />
-                    )}
+                    <img src={`data:image/png;base64,${item.imageData}`} alt={item.name} />
                     <span>{item.name}</span>
                 </div>
             ))}
