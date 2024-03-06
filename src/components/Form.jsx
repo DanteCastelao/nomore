@@ -7,7 +7,7 @@ export default function Form() {
     e.preventDefault();
     const formData = new FormData(e.target);
     try {
-      const response = await fetch('https://nomore-1f971c0714b0.herokuapp.com/upload', {
+      const response = await fetch('https://nomore-back-end.onrender.com/upload', {
         method: 'POST',
         body: formData
       });

@@ -1,7 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import CargoPants1 from "../assets/nm.cargopant1.png";
-import OverPants1 from "../assets/nm.overpant1.png";
 import CargoPants1Detail from "../assets/nm.cargopant1.detail1.png";
 import OverPants1Detail from "../assets/nm.overpant1.detail1.png";
 import ThemeChanger from "../components/ThemeChanger.astro";
@@ -12,7 +10,7 @@ const pantsData = [
     { name: "Over Pants", photos: [OverPants1Detail.src, OverPants1Detail.src, OverPants1Detail.src] },
 ];
 
-const response = await fetch('https://nomore-1f971c0714b0.herokuapp.com/prtyps');
+const response = await fetch('https://nomore-back-end.onrender.com/prtyps');
 const data = await response.json();
 ---
 
