@@ -56,12 +56,16 @@ const data = await response.json();
                     // Clear previous detail images
                     const photosContainer = document.getElementById('photos-container');
                     photosContainer.innerHTML = '';
+                    photosContainer.scrollTop = 0;
     
                     // Display detail images for the clicked item
                     detailImages[index].images.forEach(image => {
                         const detailImage = document.createElement('div');
-                        detailImage.classList.add('detail-image');
                         const img = document.createElement('img');
+                        img.addEventListener('load', () => {
+                            img.style.width = '100%';
+                            img.style.height = 'auto';
+                        });
                         img.src = image.src;
                         img.alt = `${detailImages[index].name} - Detail Image`;
                         detailImage.appendChild(img);
@@ -172,6 +176,11 @@ const data = await response.json();
         box-sizing: border-box;
         -ms-overflow-style: none;
         scrollbar-width: none;
+        width: 30%;
+    }
+    .detail-image {
+        width: 100%;
+        height: auto;
     }
     .photos::-webkit-scrollbar {
         display: none;
