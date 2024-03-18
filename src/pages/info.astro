@@ -28,9 +28,11 @@ import Menu from "../components/Menu.astro";
                 <span>no more™</span>
                 <span>based in Argentina</span>
                 <div class="info-subtext">
-                    <span>no more logos no more prints no more</span>
-                    <span>walking ads</span>
+                    <span>no more logos no more prints</span>
+                    <span>no more walking ads</span>
                 </div>
+				<a href="https://www.instagram.com/no.more.tm/">instagram</a>
+				<a href="https://www.dantecastelao.com.ar">web developer</a>
             </div>
         </div>
 		<Menu activeLink="info"/>
@@ -86,43 +88,10 @@ import Menu from "../components/Menu.astro";
 		flex-direction: column;
 		line-height: 8rem;
 	}
-	.show {
-		width: 30%;
-	}
 	a {
 		color: var(--text);
 		cursor: pointer;
 	}
-	.menu {
-		display: flex;
-		flex-direction: column;
-		padding-top: 8rem;
-		width: 5rem;
-		align-items: end;
-	}
-    .top {
-        display: flex;
-        flex-direction: row;
-        gap: 4rem;
-		flex-grow: 1;
-        padding-bottom: 12vh;
-    }
-    .left {
-        display: flex;
-        flex-direction: column;
-        align-items: end;
-    }
-	.links {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-        text-transform: uppercase;
-		flex-grow: 1;
-	}
-    .links :not(.active) {
-		text-align: end;
-        color: var(--text);
-    }
 	.a {
 		align-self: flex-end;
 		text-align: end;
@@ -149,16 +118,6 @@ import Menu from "../components/Menu.astro";
 			display: none
 		}
 	}
-    .active {
-        text-transform: lowercase;
-        text-decoration: none !important; 
-		text-align: end;
-        font-size: 1.3rem;
-        color: var(--text);
-    }
-    .active::before {
-        content: "- ";
-    }
     .info-text {
         display: flex;
         flex-direction: column;
@@ -168,6 +127,5 @@ import Menu from "../components/Menu.astro";
     .info-subtext {
         display: flex;
         flex-direction: column;
-        gap: 1.2rem;
     }
 </style>
