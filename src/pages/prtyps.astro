@@ -38,7 +38,7 @@ const data = await response.json();
         <div class="photos" id="photos-container">
         </div>
 	</div>
-    <PrtypsMobile client:only/>
+    <PrtypsMobile />
     
     <script define:vars={{ data }}>
         const detailImages = data.map(item => ({
